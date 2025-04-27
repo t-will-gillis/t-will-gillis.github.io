@@ -19,7 +19,7 @@ title: Will Gillis
 tagline: Projects and Walkthroughs # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Miscellaneous projects and walkthrough demos by Will Gillis
+  blog, GitHub, TryHackMe, walkthroughs, Will Gillis
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -39,7 +39,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
+    - https://github.com/t-will-gillis # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/will-gillis
@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://media.licdn.com/dms/image/v2/D5603AQGcO_mbJ-incw/profile-displayphoto-shrink_400_400/B56ZXFUf4qHsAg-/0/1742772240254?e=1751500800&v=beta&t=eTPNr30nbCnKpxvh3Qgw2k9EGdA1-Jav2749vnsP9bA
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
