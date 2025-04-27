@@ -9,3 +9,7 @@ tags:
 published: true
 sitemap: false
 ---
+
+# Third post
+
+This is my third post!
