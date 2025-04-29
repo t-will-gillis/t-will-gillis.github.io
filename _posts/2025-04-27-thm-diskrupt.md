@@ -4,7 +4,7 @@ title: THM Diskrupt
 date: 2025-04-27 18:45 -0700
 description: Digital forensics to recover deleted files
 image: 
-  path: ..\assets\img\site_images\diskrupt_00r2.png
+  path: ../assets/img/site_images/diskrupt_00r2.png
   alt: TryHackMe's Diskrupt Room
 category: [TryHackMe]
 tags: [thm, walkthroughs, write ups, digital forensics, hxd, ftk imager, mfte]
@@ -14,7 +14,7 @@ tags: [thm, walkthroughs, write ups, digital forensics, hxd, ftk imager, mfte]
 {: .prompt-info }
 
 
-![Desktop View](..\assets\img\site_images\diskrupt_0r4.png){: width="972" height="589" }
+![Desktop View](../assets/img/site_images/diskrupt_0r4.png){: width="972" height="589" }
 
 # **Diskrupt**
 
@@ -41,7 +41,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 - **FTK Imager**: Perform an initial inspection by opening the provided forensic image `challenge.001` using **FTK Imager**. When first opened, we are presented with an “Unrecognized file system”. The data structure of the disk image appears to match an MBR, however, the two bytes at the end of the 512 KB block (i.e. the magic number) are `0xACBD` - not `0x55AA` as expected.  
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_5a.png" title="Initial file inspection in FTK" width=500 >
+  <img src="../assets/img/site_images/diskrupt_5a.png" title="Initial file inspection in FTK" width=500 >
   <figcaption style="font: italic small sans-serif">Initial file inspection in FTK</figcaption>
 </figure>
 
@@ -52,7 +52,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_8.png" title="Corrupted bytes" width=300 >
+  <img src="../assets/img/site_images/diskrupt_8.png" title="Corrupted bytes" width=300 >
   <figcaption style="font: italic small sans-serif">Corrupted bytes</figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
   - Next, review the 16 byte entries for each partition. In the image below, Partition 1 is highlighted in orange and Partition 2 in red. The byte in position 4 (of 0-15) identifies each Partition's file system. Partition 1’s file system is ID’d as NTFS (`07`), and Partition 2 is ID’d as FAT32 (`0C`). The bytes in position 12-15 are the number of sectors for the partition. 
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_15c.png" title="Reviewing partition data for MBR" width=500 >
+  <img src="../assets/img/site_images/diskrupt_15c.png" title="Reviewing partition data for MBR" width=500 >
   <figcaption style="font: italic small sans-serif">Reviewing partition data for MBR</figcaption>
 </figure>
 
@@ -80,7 +80,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_18.png" title="Determining no. sectors for Partition 2" width=500 >
+  <img src="../assets/img/site_images/diskrupt_18.png" title="Determining no. sectors for Partition 2" width=500 >
   <figcaption style="font: italic small sans-serif">Determining no. sectors for Partition 2</figcaption>
 </figure>
 
@@ -96,14 +96,14 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
   - Similarly, repeat for Partition 1 --> NONAME (NFTS) --> [root] --> $Extend --> $RmMetaData and find and download `$J`.
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_58.png" title="Locate `$MFT` in 'Evidence Tree' and export file" width=500 >
+  <img src="../assets/img/site_images/diskrupt_58.png" title="Locate `$MFT` in 'Evidence Tree' and export file" width=500 >
   <figcaption style="font: italic small sans-serif">Locate `$MFT` in 'Evidence Tree' and export file</figcaption>
 </figure>
 
 - **MFTECmd.exe**: From the command line prompt, analyze the file using **MFTE** which creates a CSV file:
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_65.png" title="Analyze `$MFT` with MFTECmd.exe" width=500 >
+  <img src="../assets/img/site_images/diskrupt_65.png" title="Analyze `$MFT` with MFTECmd.exe" width=500 >
   <figcaption style="font: italic small sans-serif">Analyze `$MFT` with MFTECmd.exe</figcaption>
 </figure>
 
@@ -133,7 +133,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_70.png" title="Search CVS for '.pdf'" width=500 >
+  <img src="../assets/img/site_images/diskrupt_70.png" title="Search CVS for '.pdf'" width=500 >
   <figcaption style="font: italic small sans-serif">Search CVS for '.pdf'</figcaption>
 </figure>
 
@@ -145,7 +145,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_74.png" title="Search CVS for 'exfil'" width=500 >
+  <img src="../assets/img/site_images/diskrupt_74.png" title="Search CVS for 'exfil'" width=500 >
   <figcaption style="font: italic small sans-serif">Search CVS for 'exfil'</figcaption>
 </figure>
 
@@ -157,12 +157,12 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_76.png" title="Magic numbers for ZIP" width=500 >
+  <img src="../assets/img/site_images/diskrupt_76.png" title="Magic numbers for ZIP" width=500 >
   <figcaption style="font: italic small sans-serif">Magic numbers for ZIP</figcaption>
 </figure>
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_80.png" title="Start of ZIP" width=500 >
+  <img src="../assets/img/site_images/diskrupt_80.png" title="Start of ZIP" width=500 >
   <figcaption style="font: italic small sans-serif">Start of ZIP</figcaption>
 </figure>
 
@@ -174,7 +174,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_92.png" title="Ending of ZIP" width=500 >
+  <img src="../assets/img/site_images/diskrupt_92.png" title="Ending of ZIP" width=500 >
   <figcaption style="font: italic small sans-serif">Ending of ZIP</figcaption>
 </figure>
 
@@ -186,17 +186,17 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_82.png" title="Select all ZIP bytes" width=500 >
+  <img src="../assets/img/site_images/diskrupt_82.png" title="Select all ZIP bytes" width=500 >
   <figcaption style="font: italic small sans-serif">Select all ZIP bytes</figcaption>
 </figure>
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_84.png" title="Send to CyberChef" width=500 >
+  <img src="../assets/img/site_images/diskrupt_84.png" title="Send to CyberChef" width=500 >
   <figcaption style="font: italic small sans-serif">Send to CyberChef</figcaption>
 </figure>
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_90.png" title="Open ZIP" width=500 >
+  <img src="../assets/img/site_images/diskrupt_90.png" title="Open ZIP" width=500 >
   <figcaption style="font: italic small sans-serif">Open Zip</figcaption>
 </figure>
 
@@ -208,6 +208,6 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="..\assets\img\site_images\diskrupt_94.png" title="Disk wiping tool" width=500 >
+  <img src="../assets/img/site_images/diskrupt_94.png" title="Disk wiping tool" width=500 >
   <figcaption style="font: italic small sans-serif">Disk wiping tool</figcaption>
 </figure>
