@@ -21,7 +21,7 @@
 
 - type: linkedin
   icon: 'fab fa-linkedin' # icons by <https://fontawesome.com/>
-  url: 'www.linkedin.com/in/will-gillis' 
+  url: 'https://www.linkedin.com/in/will-gillis' 
 
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
