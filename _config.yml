@@ -16,7 +16,7 @@ timezone: America/Los_Angeles
 
 title: Will Gillis
 
-tagline: Technical Projects |  Walkthroughs # it will display as the subtitle
+tagline: Cybersecurity | Technical Projects | CTF Walkthroughs # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Blog, GitHub, TryHackMe, Cybersecurity, IT, Information Technology, Walkthroughs, Will Gillis
@@ -42,7 +42,7 @@ social:
     - https://github.com/t-will-gillis # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/will-gillis
+    - https://www.linkedin.com/in/will-gillis
 
 # Site Verification Settings
 webmaster_verifications:
@@ -238,5 +238,5 @@ jekyll_compose:
       image:
       category:
       tags:
-      published: true
-      sitemap: false
+      # published: true
+      # sitemap: false
