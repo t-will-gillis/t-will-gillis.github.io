@@ -22,7 +22,7 @@ Forensic Investigation of a Disk Image
 The main tools used in this room:
 - **HxD**
 - **FTK Imager**
-- **MFTECmd.exe**
+- **MFTExplorer**
 - **CyberChef**
 
 ### Background
@@ -201,12 +201,12 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 
 > Question: In the FAT32 partition, a tool related to the disk wiping was installed and then deleted. Can you find the name of that executable??
 >
-> The FAT32 partition is Partition 2. We can search for the String "wipe", and we can see that "diskwipe" is found. Since this would be an executable file, add ".exe":
+> The FAT32 partition is Partition 2. We can open Partition 2 in **FTK Imager** and review the "File list" of the "[root] directory, where the disk wipe utility is clearly listed: 
 >
-> Answer: `diskwipe.exe`
+> Answer: `DiskWipe.exe`
 {: .prompt-tip }
 
 <figure style="text-align:center">
-  <img src="../assets/img/site_images/diskrupt_thm/diskrupt_94.png" alt="" title="Disk wiping tool" width=500 >
+  <img src="../assets/img/site_images/diskrupt_thm/diskrupt_95.png" alt="" title="Disk wiping tool" width=500 >
   <figcaption style="font: italic small sans-serif">Disk wiping tool</figcaption>
 </figure>
