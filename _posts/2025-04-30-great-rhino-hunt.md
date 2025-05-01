@@ -207,15 +207,15 @@ v: Similarly, `rhino2.log` analyzed using **Wireshark** with a filter of `http`,
 vi: Using **FTK Imager**, extracted the Unallocated Space file named `00004`, then opened this file with **Autopsy**. From **Autopsy**, (7) - .jpg files were extractable: four were of alligators (with one repeat), and two were of rhinos (with one repeat). Additionally, (2)- .gif images of rhinos were extractable.  
 
 <figure style="text-align:center">
-  <img src="../assets/img/site_images/great_rhino/rhino_ftk_vi.png" alt="" title="Using FTK Imager, extracted the Unallocated Space file named `00004`" style="inline-size:90%" >
+  <img src="../assets/img/site_images/great_rhino/rhino_ftk_vi.jpg" alt="" title="Using FTK Imager, extracted the Unallocated Space file named `00004`" style="inline-size:90%" >
   <figcaption style="font: italic small sans-serif"></figcaption>
 </figure>  
 
 vii: Using **JPHS for Windows v0.5** extracted hidden images from steganographic images: First from `7-f0103704.jpg` using a *PROVIDED* password of `gator`, the second from `8-f0104520.jpg` using a *PROVIDED* password of `gumbo`
 
 <div style="display:flex; justify-content: center; align-items:flex-start;">
-  <figure style="text-align:right">
-    <img src="../assets/img/site_images/great_rhino/rhino_jphs_vii.png" alt="" title="rhino_jphs_vii.png" style="height:250px; width:auto; margin-right: 50px; box-shadow: 8px 8px 15px rgba(0,0,0,0.5)" >
+  <figure style="text-align:center">
+    <img src="../assets/img/site_images/great_rhino/rhino_jphs_vii.png" alt="" title="rhino_jphs_vii.png" style="height:250px; width:auto; margin-right: 40px; box-shadow: 8px 8px 15px rgba(0,0,0,0.5)" >
     <img src="../assets/img/site_images/great_rhino/rhino_jphs_viii.png" alt="" title="rhino_jphs_viii.png" style="height:250px;width:auto; box-shadow: 8px 8px 15px rgba(0,0,0,0.5)" >
   </figure>
 </div>
