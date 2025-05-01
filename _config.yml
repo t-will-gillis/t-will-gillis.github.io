@@ -236,6 +236,8 @@ jekyll_compose:
     posts:
       description:
       image:
+        path:
+        alt:
       category:
       tags:
       # published: true
