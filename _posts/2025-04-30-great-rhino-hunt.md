@@ -4,7 +4,7 @@ title: Great Rhino Hunt
 date: 2025-04-30 21:52 -0700
 description:
 image:
-  path: ../assets/img/site_images/great_rhino/rhino2.jpg
+  path: ../assets/img/site_images/great_rhino/rhino_0r.jpg
   alt: The Great Rhino Hunt of New Orleans
 category: [Projects]
 tags: [digital forensics]
