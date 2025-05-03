@@ -98,7 +98,8 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://media.licdn.com/dms/image/v2/D5603AQGcO_mbJ-incw/profile-displayphoto-shrink_400_400/B56ZXFUf4qHsAg-/0/1742772240254?e=1751500800&v=beta&t=eTPNr30nbCnKpxvh3Qgw2k9EGdA1-Jav2749vnsP9bA
+# avatar: https://t-will-gillis.github.io/assets/img/favicons/avatar.jpg
+avatar: https://t-will-gillis.github.io/assets/img/favicons/android-chrome-512x512.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -231,6 +232,8 @@ jekyll_compose:
     drafts:
       description:
       image:
+        path:
+        alt:
       category:
       tags:
     posts:

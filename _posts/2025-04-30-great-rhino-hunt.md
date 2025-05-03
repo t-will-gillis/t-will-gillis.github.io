@@ -2,7 +2,7 @@
 layout: post
 title: Great Rhino Hunt
 date: 2025-04-30 21:52 -0700
-description:
+description: Forensic investigation of disk image and network traces
 image:
   path: ../assets/img/site_images/great_rhino/rhino_0r.jpg
   alt: The Great Rhino Hunt of New Orleans
@@ -15,7 +15,7 @@ tags: [digital forensics]
 # **The Great Rhino Hunt of New Orleans**
 
 ### Cybersecurity - Forensics Project Report
-Forensic investigation of a disk image and three network traces
+#### Forensic investigation of a disk image and three network traces
 ### Main Tools 
 The main tools used in this project:
 - **Wireshark**

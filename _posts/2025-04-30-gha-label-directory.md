@@ -9,7 +9,7 @@ image:
 category: [Automations]
 tags: [github actions, workflows, google apps script, yml, javascript]
 ---
-
+![Desktop View](../assets/img/site_images/label_directory_gha/base_template_.png){: width="972" height="589" }
 
 # **Update Label Directory** Workflow
 
