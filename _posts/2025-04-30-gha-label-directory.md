@@ -25,7 +25,8 @@ The `update-label-directory.yml` workflow documents and manages the use of label
 <details><summary>Workflow Diagram</summary>
 
 
-<img width="6198" alt="Image" src="https://github.com/user-attachments/assets/3013381f-dcc1-45b7-ba60-a10a3b90f2e5" />
+<img src="../assets/img/site_images/label_directory_gha/base_template.png" alt="" title='Full diagram of "Update Label Directory" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+<figcaption style="font: italic small sans-serif; text-align:center">Full diagram of "Update Label Directory" workflow</figcaption>
 
 </details> 
 
