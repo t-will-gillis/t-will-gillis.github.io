@@ -51,9 +51,9 @@ The main tools used in this project:
 
 ### Report
 
-<figure style="text-align:center">
-  <img src="../assets/img/site_images/great_rhino/rhino_report.png" alt="" title="Final digital forensics report" style="inline-size:90%; box-shadow: 8px 8px 15px rgba(0,0,0,0.5)" >
-  <figcaption style="font: italic small sans-serif">Final digital forensics report</figcaption>
+<figure>
+  <img src="../assets/img/site_images/great_rhino/rhino_report.png" alt="" title="Final digital forensics report" style="max-width:90%; margin:auto; box-shadow: 6px 6px 12px rgba(128,128,128,0.5)" >
+  <figcaption style="font: italic small sans-serif; text-align:center">Final digital forensics report</figcaption>
 </figure>
 
 ### Responses
