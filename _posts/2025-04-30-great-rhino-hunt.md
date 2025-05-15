@@ -7,7 +7,7 @@ image:
   path: ../assets/img/site_images/great_rhino/rhino_0r.jpg
   alt: The Great Rhino Hunt of New Orleans
 category: [Projects]
-tags: [digital forensics]
+tags: [digital forensics, wireshark, autopsy, ftk imager, jpsh for windows, john the ripper]
 ---
 
 

@@ -7,7 +7,7 @@ image:
   path: ../assets/img/site_images/diskrupt_thm/diskrupt_00r2.png
   alt: TryHackMe's Diskrupt Room
 category: [TryHackMe]
-tags: [thm, tryhackme, walkthroughs, write ups, digital forensics, hxd, ftk imager, mfte]
+tags: [thm, tryhackme, walkthroughs, write ups, digital forensics, hxd, ftk imager, mfte, cyberchef]
 ---
 
 

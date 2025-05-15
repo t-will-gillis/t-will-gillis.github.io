@@ -7,7 +7,7 @@ image:
   path: ../assets/img/site_images/label_directory_gha/label_directory_0r.png
   alt: Update Label Directory Workflow
 category: [Automations]
-tags: [github actions, workflows, google apps script, yml, javascript]
+tags: [github actions, workflows, google apps script, yml, yaml, javascript]
 ---
 
 <figure>
