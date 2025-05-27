@@ -11,7 +11,7 @@ tags: [github actions, workflows, google apps script, yml, yaml, javascript]
 ---
 
 <figure>
-  <img src="../assets/img/site_images/schedule_monthly/base_template_flow_only.png" alt="" title='Flow diagram of "Schedule Monthly" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+  <img src="../assets/img/site_images/schedule_monthly_gha/coming_soon.png" alt="" title='Flow diagram of "Schedule Monthly" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Flow diagram of "Schedule Monthly" workflow</figcaption>
 </figure>
 
