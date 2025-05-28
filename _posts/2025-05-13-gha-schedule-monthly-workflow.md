@@ -58,37 +58,39 @@ The `schedule-monthly.yml` and `wr-schedule-monthly.yml` workflows together are 
 
 
 ### Process:
-- The [schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/schedule-monthly.yml) workflow is triggered on a cron schedule at 11:00 UTC / 4:00 am PDT on the first day of every month, except January and August. (January and August are omitted because the 'website' team takes off December and July. The time limits discussed below are adjusted to account for this expected inactivity during the break.)
-- This workflow consists of the job "Trim_Contributors" and three main steps:
-  - "Get Contributors" calls [get-contributors-data.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/get-contributors-data.js):
+- The [schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/schedule-monthly.yml) workflow is triggered on a cron schedule at 11:00 UTC / 4:00 am PDT on the first day of every month, except January and August. (January and August are omitted because the 'website' team takes off December and July. The time limits discussed below are adjusted to account for this expected inactivity during the break.) This workflow consists of the job "Trim_Contributors" with three main steps:
+  - 1. "Get Contributors" calls [get-contributors-data.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/get-contributors-data.js):
     - The function `fetchContributors()` queries GitHub for data about all user contributions to the 'hackforla/website' repo:  
       - If a user made any contribution  due to 1. commits, 2. comments, or 3. issue assignments.
       - All user contributions within the last month (first run, `allContributorsSinceOneMonthAgo`) and within the last two months (second run, `allContributorsSinceTwoMonthsAgo`) are recorded.
       - Note that members of the 'website-admin' team as well as three Hack for LA bot accounts are considered 'permanent contributors' and are automatically included in these two lists regardless of contributions. 
-      - This function also records any open issue whose assignee does not show any activity within the last two months, and whether the issue is a "Pre-work Checklist"- `inactiveWithOpenIssue`. 
-  - "Trim Inactive Members" calls [trim-inactive-members.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/trim-inactive-members.js):
-    - The function `readPreviousNotifyList()` retrieves the list of 'notified members' from the previous month `previouslyNotified`.
-    - The function `getTeamMembers()` records all current 'website-write' team members `currentTeamMembers`.
+      - This function also records any open issue whose assignee does not show any activity within the last two months, and whether the issue is a "Skills Issue"- `inactiveWithOpenIssue`. 
+  - 2. "Trim Inactive Members" calls [trim-inactive-members.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/trim-inactive-members.js):
+    - The function `readPreviousNotifyList()` retrieves the list of 'notified members' from the previous month as `previouslyNotified`.
+    - The function `getTeamMembers()` records all current 'website-write' team members as `currentTeamMembers`.
     - The function `removeInactiveMembers()` iterates through the list of current team members and checks whether the member is listed on the `allContributorsSinceTwoMonthsAgo` list. If the team member does not show any activity in the last two months, the function then checks:
-      - whether the team member is listed on the 'website' team; if not the person is added. (We want to make sure that the member is on the 'website' team before they are removed from 'website-write' team),
-      - whether the team member is on the list of `inactiveWithOpenIssue` and the issue is not a "Pre-work Checklist", if so their name and issue are added to `cannotRemoveYet`. (We don't want to remove the person with an open assignment)
-      - whether or not the team member was notified of their inactivity in the last month, i.e. whether their name is on the `previouslyNotified` list. If not, they will not be removed in the current month. (We want to give people a notification prior to removing them from the 'website-write' team) 
-      - Else, the team member will be removed from both the 'website-write' and 'website-merge' teams if applicable.
-      - If the member that was just removed has an open "Pre-work Checklist", this issue is closed by the bot vis `closePrework()`.
-    - The function `getTeamMembers()` then runs a second time to update the list of `updatedTeamMembers`.
+      - Whether the team member is listed on the 'website' team; if not the person is added. (We want to make sure that the member is on the 'website' team before they are removed from 'website-write' team) 
+      - Whether the team member is on the list of `inactiveWithOpenIssue` and the issue is not a "Skills Issue" or "Pre-work Checklist", if so their name and issue are added to `cannotRemoveYet`. (We want to review open assignments before the inactive member is removed) 
+      - Whether or not the team member was notified of their inactivity in the last month, i.e. whether their name is on the `previouslyNotified` list. If not, they will not be removed in the current month. (We want to give people a notification prior to removing them from the 'website-write' team) 
+      - Otherwise, the team member will be removed from the 'website-write' as well as the 'website-merge' teams if applicable.
+      - If the member that was just removed has an open "Skills Issue" or "Pre-work Checklist", this issue is closed by the bot via `closePrework()`.
+      - The lists of `removedContributors` and members we `cannotRemoveYet` are returned.
+    - Next, the function `getTeamMembers()` runs a second time to update the list of `updatedTeamMembers`.
     - The function `notifyInactiveMembers()` iterates through the list of updated team members and checks whether the member is listed on the `allContributorsSinceOneMonthAgo` list. If the member does not show any activity within the last month, the function checks:
-      - whether the member cloned HfLA's repo within last month. If so, then the member might be new and are still setting up, and they will not be notified of inactivity yet.
-      - otherwise, the member is added to the list of members to be notified.
-  - "Update Inactive Members JSON" uses `stefanzweifel/git-auto-commit-action@v5.0.1` to commit the record of `inactive-members.json` to the repo.
-- The post workflow file [wr-schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/wr-schedule-monthly.yml) runs if `schedule-monthly.yml` is successful and includes:
-  - The job "Create-New-Issue" and related Step call [create-new-issue.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/create-new-issue.js):
-    - The function `createIssue()` writes the lists of removed members and members to be notified to a template [inactive-members.md](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/inactive-members.md) 
-    - The function `postComment()` posts a comment to the Monday Dev Meeting Agenda issue [#2607](https://github.com/hackforla/website/issues/2607#issuecomment-2029144743), informing that the workflow has run, linking to the issue that was created, and if applicable listing members with open issues (and issue number) [post-issue-comment.js module](https://github.com/hackforla/website/blob/gh-pages/github-actions/utils/post-issue-comment.js) module
-  - The job "Close-New-Issue" gathers the pertinent data and then as a last step closes the just-generated "Review Inactive Team Members" issue. 
+      - Whether the member cloned HfLA's repo within last month. If so, then the member might be new and are still setting up, and they will not be notified of inactivity yet.
+      - Otherwise, the member is added to the list of members to be notified.
+      - The list of `notifiedContributors` is returned. 
+    - Using `fs.writeFile()`, the lists of `removedContributors`, `notifiedContributors`, and `cannotRemoveYet` are grouped as `inactiveMemberLists` then written to disk as `inactive-members.json`.
+  - 3. "Update Inactive Members JSON" uses `stefanzweifel/git-auto-commit-action@v5.0.1` to commit the record of `inactive-members.json` to the repo to finish the "Schedule Monthly" workflow.
+- The "WR Schedule Monthly" post workflow file [wr-schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/wr-schedule-monthly.yml) runs if `schedule-monthly.yml` is successful. It includes:
+  - The job "Create-New-Issue" and related Step call to [create-new-issue.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/create-new-issue.js):
+    - The function `createIssue()` writes the lists of removed members and members to be notified to the template [inactive-members.md](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/inactive-members.md) and posts a new issue titled "Review Inactive Team Members" to the Project Board.
+    - The function `postComment()` posts a comment to the Monday Dev Meeting Agenda issue [#2607](https://github.com/hackforla/website/issues/2607#issuecomment-2029144743), informing that the workflow has run, linking to the issue that was created, and if applicable listing members with open issues (and issue numbers) via the [post-issue-comment.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/utils/post-issue-comment.js) module.
+  - Finally, the job "Close-New-Issue" gathers the pertinent data and then as a last step closes the just-generated "Review Inactive Team Members" issue. 
 
 Data auto-generated by Google Sheets worksheets (maintained in the "hackforla-bot@hackforla.org" account) complement this workflow:
-- [Current 'website-write' team](https://docs.google.com/spreadsheets/d/11u71eT-rZTKvVP8Yj_1rKxf2V45GCaFz4AXA7tS_asM/edit#gid=1432079772)  
-- [Current Google Drive (Website) Registrants](https://docs.google.com/spreadsheets/d/11u71eT-rZTKvVP8Yj_1rKxf2V45GCaFz4AXA7tS_asM/edit#gid=653104171) 
+- On a daily trigger, a Google Apps Script queries the GitHub repo for the [current 'website-write' team](https://docs.google.com/spreadsheets/d/11u71eT-rZTKvVP8Yj_1rKxf2V45GCaFz4AXA7tS_asM/edit#gid=1432079772) members and updates the team Roster with members' statuses.
+- On a weekly trigger, an Google Apps Script compares the list of active team members with the list of [Current Google Drive (Website) Registrants](https://docs.google.com/spreadsheets/d/11u71eT-rZTKvVP8Yj_1rKxf2V45GCaFz4AXA7tS_asM/edit#gid=653104171). If a member is not listed as active (or is not on a separate "Safe List"), they are removed from access to the Google Drive.
 
 ## Test Procedure
 Important note: line numbers and specific code references may have changed slightly since the time of this Wiki- verify with the actual files.
