@@ -59,13 +59,13 @@ The `schedule-monthly.yml` and `wr-schedule-monthly.yml` workflows together are 
 
 ### Process:
 - The [schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/schedule-monthly.yml) workflow is triggered on a cron schedule at 11:00 UTC / 4:00 am PDT on the first day of every month, except January and August. (January and August are omitted because the 'website' team takes off December and July. The time limits discussed below are adjusted to account for this expected inactivity during the break.) This workflow consists of the job "Trim_Contributors" with three main steps:
-  - 1. "Get Contributors" calls [get-contributors-data.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/get-contributors-data.js):
+  - "Get Contributors" calls [get-contributors-data.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/get-contributors-data.js):
     - The function `fetchContributors()` queries GitHub for data about all user contributions to the 'hackforla/website' repo:  
       - If a user made any contribution  due to 1. commits, 2. comments, or 3. issue assignments.
       - All user contributions within the last month (first run, `allContributorsSinceOneMonthAgo`) and within the last two months (second run, `allContributorsSinceTwoMonthsAgo`) are recorded.
       - Note that members of the 'website-admin' team as well as three Hack for LA bot accounts are considered 'permanent contributors' and are automatically included in these two lists regardless of contributions. 
       - This function also records any open issue whose assignee does not show any activity within the last two months, and whether the issue is a "Skills Issue"- `inactiveWithOpenIssue`. 
-  - 2. "Trim Inactive Members" calls [trim-inactive-members.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/trim-inactive-members.js):
+  - "Trim Inactive Members" calls [trim-inactive-members.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/trim-inactive-members.js):
     - The function `readPreviousNotifyList()` retrieves the list of 'notified members' from the previous month as `previouslyNotified`.
     - The function `getTeamMembers()` records all current 'website-write' team members as `currentTeamMembers`.
     - The function `removeInactiveMembers()` iterates through the list of current team members and checks whether the member is listed on the `allContributorsSinceTwoMonthsAgo` list. If the team member does not show any activity in the last two months, the function then checks:
@@ -81,7 +81,7 @@ The `schedule-monthly.yml` and `wr-schedule-monthly.yml` workflows together are 
       - Otherwise, the member is added to the list of members to be notified.
       - The list of `notifiedContributors` is returned. 
     - Using `fs.writeFile()`, the lists of `removedContributors`, `notifiedContributors`, and `cannotRemoveYet` are grouped as `inactiveMemberLists` then written to disk as `inactive-members.json`.
-  - 3. "Update Inactive Members JSON" uses `stefanzweifel/git-auto-commit-action@v5.0.1` to commit the record of `inactive-members.json` to the repo to finish the "Schedule Monthly" workflow.
+  - "Update Inactive Members JSON" uses `stefanzweifel/git-auto-commit-action@v5.0.1` to commit the record of `inactive-members.json` to the repo to finish the "Schedule Monthly" workflow.
 - The "WR Schedule Monthly" post workflow file [wr-schedule-monthly.yml](https://github.com/hackforla/website/blob/gh-pages/.github/workflows/wr-schedule-monthly.yml) runs if `schedule-monthly.yml` is successful. It includes:
   - The job "Create-New-Issue" and related Step call to [create-new-issue.js](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/create-new-issue.js):
     - The function `createIssue()` writes the lists of removed members and members to be notified to the template [inactive-members.md](https://github.com/hackforla/website/blob/gh-pages/github-actions/trigger-schedule/list-inactive-members/inactive-members.md) and posts a new issue titled "Review Inactive Team Members" to the Project Board.
