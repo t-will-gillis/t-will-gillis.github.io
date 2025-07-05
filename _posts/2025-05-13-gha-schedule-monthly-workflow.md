@@ -11,7 +11,7 @@ tags: [github actions, workflows, google apps script, yml, yaml, javascript]
 ---
 
 <figure>
-  <img src="../assets/img/site_images/schedule_monthly_gha/coming_soon.png" alt="" title='Flow diagram of "Schedule Monthly" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+  <img src="../assets/img/site_images/schedule_monthly_gha/Schedule_Monthly_Workflow_WF.png" alt="" title='Flow diagram of "Schedule Monthly" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Flow diagram of "Schedule Monthly" workflow</figcaption>
 </figure>
 
@@ -20,6 +20,14 @@ tags: [github actions, workflows, google apps script, yml, yaml, javascript]
 ## Summary
 The `schedule-monthly.yml` and `wr-schedule-monthly.yml` workflows together are intended to monitor the individual activities of each member of the 'website-write' team. Members that have been inactive (as described below) for over two months are removed from the 'website-write' team. Members that have been inactive for over one month (and shy of two months) are notified that the bot will remove their team membership in the next month if the member does not resume activity. Specific details and functionalities are described below. 
 
+### Workflow Diagram
+<details><summary>Workflow Diagram</summary>
+
+
+<img src="../assets/img/site_images/schedule_monthly_gha/Schedule_Monthly_Workflow_r2.png" alt="" title='Full diagram of "Schedule Monthly" workflow' style="max-width:90%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+<figcaption style="font: italic small sans-serif; text-align:center">Full diagram of "Schedule Monthly" workflow</figcaption>
+
+</details> 
 ### Trigger
 - Workflow runs at 11:00 UTC/ 4:00 PDT, on the 1st day of every month (except January and August)
 
