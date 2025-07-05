@@ -85,9 +85,9 @@ We are provided an image named `flag.jpeg`. Of course, this file appears to be a
 
 With some light Googling, it appears this specific error "...is usually related to a wrong file format and extension" per Stellar Data Recovery (www[.]stellarinfo[.]com).
 
-Using [Gary Kessler's reference](www.garykessler.net/library/file_sigs_GCK_latest.html), a JFIF/JPE/JPEG/JPG file should have the following bytes  
+Using **Gary Kessler's reference** www.garykessler.net/library/file_sigs_GCK_latest.html, a JFIF/JPE/JPEG/JPG file should have the following bytes  
 &emsp;`FF D8 FF E0 xx xx 4A 46 49 46 00`.  
-Using [Wikipedia's List of File Signatures](en.wikipedia.org/wiki/List_of_file_signatures), we see a similar list:  
+Using **Wikipedia's List of File Signatures** en.wikipedia.org/wiki/List_of_file_signatures, we see a similar list:  
 &emsp;`FF D8 FF E0 00 10 4A 46 49 46 00 01`  
 Using **HexEdIt** (see below), we can see that our actual header file signature is:  
 &emsp;`FF D8 FF EO 00 10 4A 46 49 46 00 0D`

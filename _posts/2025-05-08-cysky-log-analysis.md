@@ -8,7 +8,7 @@ image:
   path: ../assets/img/site_images/cysky/cs_0r2.png
   alt: CySky Log Analysis
 category: [CySky]
-tags: [notes, cysky, cybersecurity, log analysis, bash, cyberchef ]
+tags: [notes, cysky, cybersecurity, log analysis, bash, cyberchef, epoch convertor ]
 
 ---
 
@@ -46,7 +46,7 @@ Download the file named `squid_access.log`. We can use **bash** commands to anal
 
 > In what year was this log saved?
 >
-> From the above `cat`, the log timestamps are given in Epoch time. Using [EpochConverter](www.epochconverter.com) with an input of "1286536308", we can find the start year:
+> From the above `cat`, the log timestamps are given in Epoch time. Using **EpochConverter** www.epochconverter.com with an input of "1286536308", we can find the start year:
 >
 > **`2010`**
 {: .prompt-tip }
@@ -127,15 +127,15 @@ Analysis of logs from a custom file format
 We are given a custom log in the SKY log file format. Per CySky:  
 
 <figure>
-  <img src="../assets/img/site_images/cyber_skyline/cff_10.png" alt="" title="Specification of Custom File Format" style="max-width:50%; margin:auto auto 0px auto" >
-  <img src="../assets/img/site_images/cyber_skyline/cff_12.png" alt="" title="Specification of Custom File Format" style="max-width:50%; margin:0px auto auto auto" >
+  <img src="../assets/img/site_images/cysky/cff_10.png" alt="" title="Specification of Custom File Format" style="max-width:50%; margin:auto auto 0px auto" >
+  <img src="../assets/img/site_images/cysky/cff_12.png" alt="" title="Specification of Custom File Format" style="max-width:50%; margin:0px auto auto auto" >
   <figcaption style="font: italic small sans-serif; text-align:center">Specification of Custom File Format</figcaption>
 </figure> 
 
 Download the file named `Custom File Format.sky`. 
 
 <figure>
-  <img src="../assets/img/site_images/cyber_skyline/cff_12.png" alt="" title=" " style="max-width:50%; margin:auto" >
+  <img src="../assets/img/site_images/cysky/cff_12.png" alt="" title=" " style="max-width:50%; margin:auto" >
   <figcaption style="font: italic small sans-serif; text-align:center"> </figcaption>
 </figure> 
 
