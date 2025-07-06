@@ -26,7 +26,7 @@ The main tools used in this room:
 - **CyberChef**
 
 ### Background
-The [TryHackMe Diskrupt](https://tryhackme.com/room/diskrupt) challenge involves a forensic investigation of a disk image. The scenario presented is that an employee is suspected of exfiltrating proprietary info and attempting to erase traces of their actions. The forensics team has taken an image of the suspect’s disk, but due to an unexpected system failure, fragments of critical evidence were left behind on the workstation and external devices.  
+The TryHackMe [Diskrupt](https://tryhackme.com/room/diskrupt) challenge involves a forensic investigation of a disk image. The scenario presented is that an employee is suspected of exfiltrating proprietary info and attempting to erase traces of their actions. The forensics team has taken an image of the suspect’s disk, but due to an unexpected system failure, fragments of critical evidence were left behind on the workstation and external devices.  
 
 The forensics lab has provided a forensic image of the hard drive. The expectations are to:
 - Fix the damaged disk
@@ -39,8 +39,8 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 ### Steps Taken  
 - **FTK Imager**: Perform an initial inspection by opening the provided forensic image `challenge.001` using **FTK Imager**. When first opened, we are presented with an “Unrecognized file system”. The data structure of the disk image appears to match an MBR, however, the two bytes at the end of the 512 KB block (i.e. the magic number) are `0xACBD` - not `0x55AA` as expected.  
 
-<figure style="text-align:center">
-  <img src="../assets/img/site_images/diskrupt_thm/diskrupt_5a.png" alt="" title="Initial file inspection in FTK" width=500 >
+<figure>
+  <img src="../assets/img/site_images/diskrupt_thm/diskrupt_5a.png" alt="" title="Initial file inspection in FTK" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
   <figcaption style="font: italic small sans-serif">Initial file inspection in FTK</figcaption>
 </figure>
 
@@ -50,7 +50,7 @@ The forensics lab has provided a forensic image of the hard drive. The expectati
 > Answer: `AC BD`
 {: .prompt-tip }
 
-<figure style="text-align:center">
+<figure>
   <img src="../assets/img/site_images/diskrupt_thm/diskrupt_8.png" alt="" title="Corrupted bytes" width=300 >
   <figcaption style="font: italic small sans-serif">Corrupted bytes</figcaption>
 </figure>
