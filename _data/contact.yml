@@ -3,6 +3,10 @@
 - type: github
   icon: "fab fa-github"
 
+
+- type: tryhackme 
+  icon: 'fa-solid fa-robot'
+  url: 'https://tryhackme.com/p/339.colorado.dev'
 # - type: twitter
 #   icon: "fa-brands fa-x-twitter"
 
@@ -22,6 +26,7 @@
 - type: linkedin
   icon: 'fab fa-linkedin' # icons by <https://fontawesome.com/>
   url: 'https://www.linkedin.com/in/will-gillis' 
+
 
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'

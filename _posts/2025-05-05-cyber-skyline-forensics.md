@@ -7,7 +7,7 @@ image:
   path: ../assets/img/site_images/cysky/cs_0r2.png
   alt: CySky Forensics
 category: [CySky]
-tags: [notes, cysky, cybersecurity, forensics, binwalk, metadata290, hexed.it, volatility3, crackstation]
+tags: [notes, cysky, cybersecurity, forensics, binwalk, metadata2go, hexed.it, volatility3, crackstation]
 ---
 
 
