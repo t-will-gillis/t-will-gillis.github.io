@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "THM AD: BadSuccessor"
+title: "THM: AD|BadSuccessor"
 date: 2025-06-10 20:22 -0700
 description: BadSuccessor attack for privilege escalation in Active Directory
 image:
-  path: ../assets/img/site_images/thm_bad_success/bad_success_00.png
+  path: ../assets/img/site_images/thm-bad_success/bad_success_00.png
   alt: "TryHackMe's AD: BadSuccessor Room"
 category: [TryHackMe]
 tags: [thm, tryhackme, walkthroughs, write ups, privilege escalation, active directory, exploits]
 ---
 
 
-![Desktop View](../assets/img/site_images/thm_bad_success/bad_success_0.png){: width="972" height="589" }
+![Desktop View](../assets/img/site_images/thm-bad_success/bad_success_0.png){: width="972" height="589" }
 
 # **AD: BadSuccessor**
 
@@ -39,14 +39,14 @@ The BadSuccessor attack can be carried out if the user controls a dMSA object: t
 - **Remmina**: We are provided with credentials for a Windows Server 2019 account which we can use to log in to RDP using **Remmina**. 
 
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_21.png" alt="" title="Logging in using Remmina" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_21.png" alt="" title="Logging in using Remmina" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Logging in using Remmina</figcaption>
 </figure>
 
 - We are provided with a powershell script `Get-BadSuccessorOUPermissions.ps1` that will help us identify accounts that can create dMSAs in their Organization Units. 
 
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_25.png" alt="" title="Using the Powershell script" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_25.png" alt="" title="Using the Powershell script" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Using the Powershell script</figcaption>
 </figure>
 
@@ -58,17 +58,17 @@ The BadSuccessor attack can be carried out if the user controls a dMSA object: t
 - **SharpSuccessor**: We are provided a program written in C# that will help us with the attack. Given a `/path:` the user has access to, the `/account:` with access to the OU, the `/name:` for the dMSA object to create, and the account to `/impersonate:`, we can create a weaponized dMSA object.
 
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_30.png" alt="" title="Weaponized dMSA" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_30.png" alt="" title="Weaponized dMSA" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Weaponized dMSA</figcaption>
 </figure>
 
 - **Rubeus**: Next, we can use **Rubeus** to request a Ticket Granting Ticket (TGT). "`tgtdeleg` *abuses a lesser-known feature of Kerberos’s unconstrained delegation. It asks the system to impersonate the current user and export their TGT directly from memory via a legitimate API call. On the other hand, the* `/nowrap` *option outputs the result (typically base64) in a single line, perfect for copy-paste reuse without formatting headaches."*
 
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_31.png" alt="" title="Creating a TGT, top" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_31.png" alt="" title="Creating a TGT, top" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
 </figure>
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_35.png" alt="" title="Creating a TGT" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_35.png" alt="" title="Creating a TGT" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(124,124,124,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Creating a TGT</figcaption>
 </figure>
 
@@ -88,11 +88,11 @@ The BadSuccessor attack can be carried out if the user controls a dMSA object: t
   - `/service:` the SPN for SMB/CIFS service we are accessing.
   
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_42.png" alt="" title="Accessing the Admin Account" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_42.png" alt="" title="Accessing the Admin Account" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Accessing the Admin Account</figcaption>
 </figure>
 <figure>
-  <img src="../assets/img/site_images/thm_bad_success/bad_success_43.png" alt="" title="Accessing the Flag" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
+  <img src="../assets/img/site_images/thm-bad_success/bad_success_43.png" alt="" title="Accessing the Flag" style="max-width:75%; margin:auto; box-shadow: 4px 4px 8px rgba(192,192,192,0.5);">
   <figcaption style="font: italic small sans-serif; text-align:center">Accessing the Flag</figcaption>
 </figure>
 

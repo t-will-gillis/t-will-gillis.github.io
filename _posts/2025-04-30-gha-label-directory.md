@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GHA Update Label Directory
+title: 'GHA: Update Label Directory'
 date: 2025-04-30 16:00 -0700
 description: GitHub Actions Automation to Monitor Labels in Repo
 image: 

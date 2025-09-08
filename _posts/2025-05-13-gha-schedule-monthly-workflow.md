@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GHA Schedule Monthly Workflow
+title: 'GHA: Schedule Monthly Workflow'
 date: 2025-05-13 13:43 -0700
 description: GitHub Actions Workflow for Identity and Access Management
 image: 
