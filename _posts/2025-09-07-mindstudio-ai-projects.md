@@ -16,7 +16,7 @@ tags:
 - multi-agent
 - business integrations
 ---
-![Desktop View](../assets/img/site_images/mindstudio_ai/mindstudio_00.png){: width="972" height="589" }
+![Desktop View](../assets/img/site_images/mindstudio_ai/mindstudio_0.png){: width="972" height="589" }
 
-# **AI Agent Portfolio**
+# [**AI Agent Portfolio**](https://github.com/t-will-gillis/ai_agent_portfolio)
 A comprehensive suite of AI agents designed to streamline business processes, enhance productivity, and solve real-world challenges. Each agent leverages cutting-edge AI technology to deliver practical solutions for modern workflows.
